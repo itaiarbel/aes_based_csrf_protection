@@ -22,8 +22,8 @@ public function verify_csrf($csrf){
 	//match sha1(user agent) - or not verified
 	if(isset($csrf_data[1])){if ($csrf_data [1] != $ua){return false;}}else{return false;}
 	
-	//check if timestamp not passed 5min (18000 seconds)
-	if(isset($csrf_data[2])){if ($csrf_data[2]+18000<$ts){
+	//check if timestamp not passed 5min (300seconds)
+	if(isset($csrf_data[2])){if ($csrf_data[2]+300<$ts){
 			return false; //time passed
 		}}else{return false;}
 	return true; //if passed all tests
