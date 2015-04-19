@@ -4,6 +4,7 @@ class csrfModule{
 public function get_csrf(){
 		//generate aes based csrf token
 		$ip=$_SERVER['REMOTE_ADDR'];
+		//hashing user-agent will fix length and input problems (like if ua contains '|' char... O.o)
 		$ua=sha1($_SERVER['HTTP_USER_AGENT']);
 		$ts=time();
 		$random_string=self::generate_random_string();
