@@ -1,7 +1,7 @@
 <?php 
 class csrfModule{
 	
-public function get_login_csrf(){
+public function get_csrf(){
 		//generate aes based csrf token
 		$ip=$_SERVER['REMOTE_ADDR'];
 		$ua=sha1($_SERVER['HTTP_USER_AGENT']);
@@ -10,7 +10,7 @@ public function get_login_csrf(){
 		return AESEncryptCtr($ip.'|'.$ua.'|'.$ts.'|'.$random_string,CSRF_AES_SITE_KEY,256);
 }
 	
-public function verify_login_csrf($csrf){
+public function verify_csrf($csrf){
 	//verify aes based csrf token
 	$ip=$_SERVER['REMOTE_ADDR'];
 	$ua=sha1($_SERVER['HTTP_USER_AGENT']);
